@@ -1,5 +1,6 @@
 import sys
 from required_funs import *
+from os import path
 
 def main():
     print("Welcome to the bacterial data analysis program!")
@@ -7,7 +8,7 @@ def main():
     while(True):
         option = menu(main_options)
         if option == 1:
-            print("TODO: not implemented yet")
+            data = input_datafile()
         elif option == 2:
             print("TODO: not implemented yet")
         elif option == 3:
@@ -43,8 +44,27 @@ def input_option(options):
                 return x
             else:
                 print("Not an option, please try again.")
-        except ValueError:
+        except (ValueError, EOFError):
             print("Please input a number corresponding to the option you want to select.")
             pass
+
+def input_datafile():
+    while(True):
+        filename = input_filename()
+        data = dataLoad(filename)
+        if(data):
+            return data
+        else:
+            print("File contents are invalid, please try again.")
+
+def input_filename():
+    while(True):
+        try:
+            filename = input("Please input the path to your data file: ")
+            if path.isfile(filename):
+                return(filename)
+        except EOFError:
+            pass
+        print("File does not exist or you do not have permission to read it. Please try again.")
 
 main()
