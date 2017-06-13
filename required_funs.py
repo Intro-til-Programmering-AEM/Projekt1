@@ -29,7 +29,28 @@ def dataLoad(filename): #Det antages, at filen findes
 
 
 def dataStatistics(data, statistic):
-    print("Error: not implemented yet") # TODO
+    if statistic=="Mean Temperature":
+        gns_Temperatur=np.mean(data.Temperature)
+        return gns_Temperatur
+    if statistic=="Mean GrowthRate":
+        gns_GR=np.mean(data.GrowthRate)
+        return gns_GR
+    if statistic=="Std Temperature":
+        std_Temperatur=np.sd(data.Temperature)
+        return std_Temperatur
+    if statistic=="Std GrowthRate":
+        std_GR==np.sd(data.GrowthRate)
+        return std_GR
+    if statistic=="Rows":
+        return(len(data))
+    if statistic=="Mean Cold Growth Rate":
+        gns_cold=np.mean(data.GrowthRate[data.Temperature<20])
+        return gns_cold
+    if statistic=="Mean Hot Growth Rate":
+        gns_hot=np.mean(data.GrowthRate[data.Temperature>50])
+        return gns_hot
+    
+
 
 def dataPlot(data):
     plotNumbers(data)
