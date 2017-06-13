@@ -20,7 +20,7 @@ def dataLoad(filename): #Det antages, at filen findes
         if(row.GrowthRate < 0):
             toBeDeleted.add(i)
             print("Growth rate not positive in line"+str(ln))
-        if(row.Bacteria not in bacteria_types.keys):
+        if(row.Bacteria not in bacteria_types.keys()):
             toBeDeleted.add(i)
             print("Bacteria type not valid in line"+str(ln))
     data = data.drop(toBeDeleted)
