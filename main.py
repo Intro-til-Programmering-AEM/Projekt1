@@ -1,7 +1,6 @@
 import sys
 from required_funs import *
 from os import path
-import pandas as pd
 
 def main():
     print("Welcome to the bacterial data analysis program!")
@@ -14,7 +13,9 @@ def main():
         elif option == 2:
             print("TODO: not implemented yet")
         elif option == 3:
-            print("TODO: not implemented yet")
+            print("Please choose the kind of statistic you would like to calculate:")
+            statistic = statistic_options[menu(statistic_options)]
+            print(dataStatistics(data,statistic))
         elif option == 4:
             dataPlot(data)
         elif option == 5:
@@ -29,6 +30,17 @@ main_options = {
     4: "Generate plots",
     5: "Quit",
 }
+
+statistic_options = {
+    1: "Mean Temperature",
+    2: "Mean Growth rate",
+    3: "Std Temperature",
+    4: "Std Growth Rate",
+    5: "Rows",
+    6: "Mean Cold Growth rate",
+    7: "Mean Hot Growth rate",
+}
+
 
 def menu(options):
     # Print options with option numbers
