@@ -18,6 +18,7 @@ def dataPlot(data):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 print(dataLoad("test.txt"))
 
 def f(noget):
@@ -27,17 +28,4 @@ f(data.Temperature)
 
  #list(filter(lambda t: t > 10 and t < 60,data.Temperature))
 
-for 
-=======
-=======
->>>>>>> f74981612c6f2bdbe8b92b5103e9c5d3185fbb80
-bacteria_types = {
-    1: "Salmonella enterica",
-    2: "Bacillus cereus",
-    3: "Listeria",
-    4: "Brochothrix thermosphacta"
-}
-<<<<<<< HEAD
->>>>>>> f74981612c6f2bdbe8b92b5103e9c5d3185fbb80
-=======
->>>>>>> f74981612c6f2bdbe8b92b5103e9c5d3185fbb80
+
