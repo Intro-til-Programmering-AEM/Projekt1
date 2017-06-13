@@ -16,7 +16,7 @@ def main():
         elif option == 3:
             print("TODO: not implemented yet")
         elif option == 4:
-            print("TODO: not implemented yet")
+            dataPlot(data)
         elif option == 5:
             print("Thank you for using the bacterial data analysis program.")
             sys.exit()
