@@ -52,7 +52,7 @@ def input_datafile():
     while(True):
         filename = input_filename()
         data = dataLoad(filename)
-        if(data):
+        if data is not None:
             return data
         else:
             print("File contents are invalid, please try again.")
