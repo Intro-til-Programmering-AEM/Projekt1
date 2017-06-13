@@ -10,7 +10,7 @@ def main():
         option = menu(main_options)
         if option == 1:
             data = input_datafile()
-            print("Succesfully imported "+str(len(data.index))+" rows of data.")
+            print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 2:
             print("TODO: not implemented yet")
         elif option == 3:
