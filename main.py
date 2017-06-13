@@ -1,4 +1,5 @@
 import sys
+from required_funs import *
 
 def main():
     print("Welcome to the bacterial data analysis program!")
