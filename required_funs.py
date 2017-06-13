@@ -11,3 +11,10 @@ def dataStatistics(data, statistic):
 
 def dataPlot(data):
     print("Error: not implemented yet") # TODO
+
+bacteria_types = {
+    1: "Salmonella enterica",
+    2: "Bacillus cereus",
+    3: "Listeria",
+    4: "Brochothrix thermosphacta"
+}
