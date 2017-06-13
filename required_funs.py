@@ -24,7 +24,6 @@ def dataLoad(filename): #Det antages, at filen findes
             toBeDeleted.add(i)
             print("Bacteria type not valid in line"+str(ln))
     data = data.drop(toBeDeleted)
-    print(data)
     return data
 
 
