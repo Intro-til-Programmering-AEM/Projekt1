@@ -1,6 +1,7 @@
 import sys
 from required_funs import *
 from os import path
+import pandas as pd
 
 def main():
     print("Welcome to the bacterial data analysis program!")
@@ -9,6 +10,7 @@ def main():
         option = menu(main_options)
         if option == 1:
             data = input_datafile()
+            print("Succesfully imported "+str(len(data.index))+" rows of data.")
         elif option == 2:
             print("TODO: not implemented yet")
         elif option == 3:
