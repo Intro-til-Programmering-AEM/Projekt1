@@ -49,7 +49,7 @@ def dataStatistics(data, statistic):
     if statistic=="Mean Hot Growth Rate":
         gns_hot=np.mean(data.GrowthRate[data.Temperature>50])
         return gns_hot
-    
+
 
 
 def dataPlot(data):
