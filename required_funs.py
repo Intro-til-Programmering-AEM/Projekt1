@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 import numpy as np
 
 def dataLoad(filename): #Det antages, at filen findes
@@ -26,7 +25,6 @@ def dataLoad(filename): #Det antages, at filen findes
     data = data.drop(toBeDeleted)
     return data
 
-
 def dataStatistics(data, statistic):
     if statistic == "Mean Temperature":
         return np.mean(data.Temperature)
@@ -42,8 +40,6 @@ def dataStatistics(data, statistic):
         return np.mean(data.GrowthRate[data.Temperature<20])
     elif statistic == "Mean Hot Growth rate":
         return np.mean(data.GrowthRate[data.Temperature>50])
-
-
 
 def dataPlot(data):
     plotNumbers(data)
