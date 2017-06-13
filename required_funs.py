@@ -1,14 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import os 
+import os
 import numpy as np
 
 def dataLoad(filename): #Det antages, at filen findes
-    try:    
+    try:
         data=pd.read_csv(filename,sep=' ',names = ["Temperature","GrowthRate", "Bacteria"])
     except:
         return None
-    toBeDeleted = set()       
+    toBeDeleted = set()
     for i, row in data.iterrows():
         ln = i+1
         if(row.Temperature < 10):
@@ -25,7 +25,7 @@ def dataLoad(filename): #Det antages, at filen findes
             print("Bacteria type not valid in line"+str(ln))
     data = data.drop(toBeDeleted)
     print(data)
-    return data 
+    return data
 
 
 def dataStatistics(data, statistic):
