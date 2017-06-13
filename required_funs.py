@@ -16,7 +16,11 @@ def dataPlot(data):
     plotGrowthRates(data)
 
 def plotNumbers(data):
-    print("Error: not implemented yet") # TODO
+    counts = [1,2,3,1]
+    plt.bar(list(bacteria_types.keys()), counts, tick_label = list(bacteria_types.values()))
+    plt.title("Numbers of each type of bacteria")
+    plt.ylabel("Number of bacteria")
+    plt.show()
 
 def plotGrowthRates(data):
     print("Error: not implemented yet") # TODO
