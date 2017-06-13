@@ -28,26 +28,20 @@ def dataLoad(filename): #Det antages, at filen findes
 
 
 def dataStatistics(data, statistic):
-    if statistic=="Mean Temperature":
-        gns_Temperatur=np.mean(data.Temperature)
-        return gns_Temperatur
-    if statistic=="Mean GrowthRate":
-        gns_GR=np.mean(data.GrowthRate)
-        return gns_GR
-    if statistic=="Std Temperature":
-        std_Temperatur=np.sd(data.Temperature)
-        return std_Temperatur
-    if statistic=="Std GrowthRate":
-        std_GR==np.sd(data.GrowthRate)
-        return std_GR
-    if statistic=="Rows":
+    if statistic == "Mean Temperature":
+        return np.mean(data.Temperature)
+    elif statistic == "Mean Growth rate":
+        return np.mean(data.GrowthRate)
+    elif statistic == "Std Temperature":
+        return np.sd(data.Temperature)
+    elif statistic == "Std Growth rate":
+        return np.sd(data.GrowthRate)
+    elif statistic == "Rows":
         return(len(data))
-    if statistic=="Mean Cold Growth Rate":
-        gns_cold=np.mean(data.GrowthRate[data.Temperature<20])
-        return gns_cold
-    if statistic=="Mean Hot Growth Rate":
-        gns_hot=np.mean(data.GrowthRate[data.Temperature>50])
-        return gns_hot
+    elif statistic == "Mean Cold Growth rate":
+        return np.mean(data.GrowthRate[data.Temperature<20])
+    elif statistic == "Mean Hot Growth rate":
+        return np.mean(data.GrowthRate[data.Temperature>50])
 
 
 
