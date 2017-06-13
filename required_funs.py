@@ -1,5 +1,10 @@
-def dataLoad(filename):
-    print("Error: not implemented yet") # TODO
+import pandas as pd
+def dataLoad(filename): #Det antages, at filen findes
+    try:    
+        data=pd.read_csv(filename,sep=' ')
+        return data
+    except:
+        return None
 
 def dataStatistics(data, statistic):
     print("Error: not implemented yet") # TODO
