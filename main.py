@@ -57,7 +57,7 @@ def main():
             # Refilters data every time a filter is added or deleted, inefficient!
             data = originalData
             for f in filters:
-                data = filter(f[0],data)
+                data = data[f[0](data)]
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             option = menu(statistic_options)
