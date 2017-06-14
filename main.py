@@ -46,49 +46,22 @@ def main():
             sys.exit()
         # No else needed, it has already been checked that the option is legal
 
-main_options = {
-    1: "Load data",
-    2: "Filter data",
-    3: "Display statistics",
-    4: "Generate plots",
-    5: "Quit",
-}
+main_options = ["Load data","Filter data","Display statistics","Generate plots","Quit"]
 
-statistic_options = {
-    1: "Mean Temperature",
-    2: "Mean Growth rate",
-    3: "Std Temperature",
-    4: "Std Growth Rate",
-    5: "Rows",
-    6: "Mean Cold Growth rate",
-    7: "Mean Hot Growth rate",
-}
+statistic_options = ["Mean Temperature","Mean Growth rate","Std Temperature","Std Growth Rate","Rows","Mean Cold Growth rate","Mean Hot Growth rate"]
 
-filter_options = {
-    1: "Add a filter",
-    2: "Remove a filter"
-}
+filter_options = ["Add a filter","Remove a filter"]
 
-column_options = {
-    1: "Temperature",
-    2: "Growth rate",
-    3: "Bacteria type"
-}
+column_options = ["Temperature","Growth rate","Bacteria type"]
 
-continuous_options = {
-    1: "Upper bound",
-    2: "Lower bound"
-}
+continuous_options = ["Upper bound","Lower bound"]
 
-categorical_options = {
-    1: "Exclude a type",
-    2: "Exclude everything but one type"
-}
+categorical_options = ["Exclude a type","Exclude everything but one type"]
 
 def menu(options):
     # Print options with option numbers
-    for n, t in options.items():
-        print(str(n)+". "+t+".")
+    for i in range(len(options)):
+        print(str(i+1)+". "+options[i]+".")
     return input_option(options)
 
 def input_option(options):
@@ -97,7 +70,7 @@ def input_option(options):
             # Get number that may be a legal option
             x = int(input("Select an option: "))
             # Check if it's legal
-            if x in options.keys():
+            if x <= len(options) and x > 0:
                 return x
             else:
                 print("Not an option, please try again.")
