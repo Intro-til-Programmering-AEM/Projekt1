@@ -8,20 +8,28 @@ def main():
     filters = []
     while(True):
         option = menu(main_options)
-        if option == 1:
+        if option is None:
+            pass
+        elif option == 1:
             data = input_datafile()
             print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 2:
             option = menu(filter_options)
-            if option == 1: # Adding
+            if option is None:
+                pass
+            elif option == 1: # Adding
                 print("Which column would you like to filter on?")
                 option = menu(column_options)
                 print("Which kind of filter would you like to add?")
-                if option == 3:
+                if option is None:
+                    pass
+                elif option == 3:
                     choice = menu(categorical_options)
                     print("Which bacteria type?")
                     bacterium = menu(list(bacteria_types.values()))
-                    if choice == 1:
+                    if choice is None:
+                        pass
+                    elif choice == 1:
                         filters.append((lambda r: r.Bacteria != bacterium, "Exclude "+bacteria_types[bacterium]))
                     else:
                         filters.append((lambda r: r.Bacteria == bacterium, "Include only "+bacteria_types[bacterium]))
@@ -38,14 +46,20 @@ def main():
                 filter_texts = list(map(lambda f: f[1], filters))
                 filter_texts.append("All filters")
                 choice = menu(filter_texts)
-                if choice == len(filter_texts):
+                if choice is None:
+                    pass
+                elif choice == len(filter_texts):
                     filters = []
                 else:
                     del filters[choice-1]
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
-            statistic = statistic_options[menu(statistic_options)]
-            print(dataStatistics(data,statistic))
+            option = menu(statistic_options)
+            if option is None:
+                pass
+            else:
+                statistic = statistic_options[option]
+                print(dataStatistics(data,statistic))
         elif option == 4:
             dataPlot(data)
         elif option == 5:
@@ -75,13 +89,18 @@ def input_option(options):
     while(True):
         try:
             # Get number that may be a legal option
-            x = int(input("Select an option: "))
+            x = input("Select an option: ")
+            if x == "":
+                raise EOFError
+            x = int(x)
             # Check if it's legal
             if x <= len(options) and x > 0:
                 return x
             else:
                 print("Not an option, please try again.")
-        except (ValueError, EOFError):
+        except EOFError:
+            return None
+        except ValueError:
             print("Please input a number corresponding to the option you want to select.")
             pass
 
