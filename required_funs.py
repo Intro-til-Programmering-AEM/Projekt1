@@ -2,6 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+bacteria_types = {
+    1: "Salmonella enterica",
+    2: "Bacillus cereus",
+    3: "Listeria",
+    4: "Brochothrix thermosphacta"
+}
+
 def dataLoad(filename): #Det antages, at filen findes
     try:
         data=pd.read_csv(filename,sep=' ',names = ["Temperature","GrowthRate", "Bacteria"])
@@ -56,15 +63,23 @@ def plotGrowthRates(data):
     points = [[] for i in bacteria_types]
     for i, r in data.iterrows():
         points[int(r.Bacteria) - 1].append((r.Temperature, r.GrowthRate))
+    points = [sorted(pointList,key=lambda t: t[0]) for pointList in points] # [[(temp, growthRate)]]
+    xyPairList = [zip(*pointList) for pointList in points] # [[(temps),(growthRates)]]
+    flattened = [item for pair in xyPairList for item in pair] # [(temps),(growthRates),(temps),...]
+    plt.plot(*flattened)
+    label=(list(bacteria_types.values()))
+    plt.xlabel("Temperature")
+    plt.ylabel("Growth rate")
+    plt.grid()
+    plt.title("Growth rate by temperature")
+    plt.legend(label,loc="upper right")
+    plt.xlim(10,60)
+    plt.ylim(ymin=0)
+    plt.show()
+
     # TODO sort points[i] by x value
     # TODO plot list of list of (temp, growthrate) points
-    # points[i] is list of points for bacterium i
+    # points[i] is list of points for bacterium i+1
 
 
 
-bacteria_types = {
-    1: "Salmonella enterica",
-    2: "Bacillus cereus",
-    3: "Listeria",
-    4: "Brochothrix thermosphacta"
-}
