@@ -2,6 +2,8 @@ import sys
 from required_funs import *
 from os import path
 
+
+
 def main():
     print("Welcome to the bacterial data analysis program!")
     print("Your options:")

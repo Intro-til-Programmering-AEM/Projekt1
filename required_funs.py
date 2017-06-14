@@ -10,6 +10,8 @@ def dataLoad(filename): #Det antages, at filen findes
     toBeDeleted = set()
     for i, row in data.iterrows():
         ln = i+1
+        
+        
         if(row.Temperature < 10):
             toBeDeleted.add(i)
             print("Temperature too low in line "+str(ln))
