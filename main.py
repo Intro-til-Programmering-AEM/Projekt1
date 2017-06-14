@@ -13,7 +13,7 @@ def main():
             print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 2:
             option = menu(filter_options)
-            if option == 1:
+            if option == 1: # Adding
                 print("Which column would you like to filter on?")
                 option = menu(column_options)
                 print("Which kind of filter would you like to add?")
@@ -33,7 +33,7 @@ def main():
                         return col > bound if choice == 1 else col < bound
                     filter_text = column_options[option]+" must be "+("greater than" if choice == 1 else "less than")+" "+str(bound)
                     filters.append((filter_fun,filter_text))
-            elif option == 2:
+            elif option == 2: # Deleting
                 print("Which filter would you like to remove?")
                 filter_texts = list(map(lambda f: f[1], filters))
                 filter_texts.append("All filters")
