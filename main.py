@@ -37,7 +37,7 @@ def main():
                         filters.append((lambda r: r.Bacteria == bacterium, "Include only "+bacteria_types[bacterium]))
                 else:
                     choice = menu(continuous_options)
-                    bound = input_float("Please input your bound:")
+                    bound = input_float("Please input your bound: ")
                     def filter_fun(row):
                         col = row.Temperature if option == 1 else row.GrowthRate
                         return col > bound if choice == 1 else col < bound
