@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer 
 
 bacteria_types = {
     1: "Salmonella enterica",
@@ -51,6 +52,9 @@ def dataStatistics(data, statistic):
 def dataPlot(data):
     plotNumbers(data)
     plotGrowthRates(data)
+    boxPlotGrowthRates(data)
+    boxPlotTemperatures(data)
+    
 
 def plotNumbers(data):
     counts = [list(data.Bacteria).count(i) for i in bacteria_types.keys()]
@@ -67,7 +71,7 @@ def plotGrowthRates(data):
     xyPairList = [zip(*pointList) for pointList in points] # [[(temps),(growthRates)]]
     flattened = [item for pair in xyPairList for item in pair] # [(temps),(growthRates),(temps),...]
     plt.plot(*flattened)
-    label=(list(bacteria_types.values()))
+    label = [bacteria_types[i] for i in set(data.Bacteria)]
     plt.xlabel("Temperature")
     plt.ylabel("Growth rate")
     plt.grid()
@@ -76,3 +80,4 @@ def plotGrowthRates(data):
     plt.xlim(10,60)
     plt.ylim(ymin=0)
     plt.show()
+    

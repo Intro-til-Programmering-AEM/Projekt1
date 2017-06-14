@@ -1,5 +1,6 @@
 import sys
 from required_funs import *
+from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer 
 from os import path
 
 def main():
