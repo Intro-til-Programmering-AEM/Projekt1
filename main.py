@@ -13,8 +13,9 @@ def main():
             pass
         elif option == 1:
             originalData = input_datafile()
-            data = input_datafile()
-            print("Succesfully imported "+str(len(data))+" rows of data.")
+            if originalData is not None:
+                data = originalData
+                print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 2:
             option = menu(filter_options)
             if option is None:
@@ -120,6 +121,8 @@ def input_float(request):
 def input_datafile():
     while(True):
         filename = input_filename()
+        if filename is None:
+            return None
         data = dataLoad(filename)
         if data is not None:
             return data
@@ -133,7 +136,7 @@ def input_filename():
             if path.isfile(filename):
                 return(filename)
         except EOFError:
-            pass
+            return None
         print("File does not exist or you do not have permission to read it. Please try again.")
 
 def print_filters(filters):
