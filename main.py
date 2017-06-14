@@ -41,8 +41,8 @@ def main():
                     bound = input_float("Please input your bound: ")
                     def filter_fun(row):
                         col = row.Temperature if option == 1 else row.GrowthRate
-                        return col > bound if choice == 1 else col < bound
-                    filter_text = column_options[option]+" must be "+("greater than" if choice == 1 else "less than")+" "+str(bound)
+                        return col < bound if choice == 1 else col > bound
+                    filter_text = column_options[option-1]+" must be "+("less than" if choice == 1 else "greater than")+" "+str(bound)
                     filters.append((filter_fun,filter_text))
             elif option == 2: # Deleting
                 print("Which filter would you like to remove?")
