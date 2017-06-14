@@ -76,10 +76,3 @@ def plotGrowthRates(data):
     plt.xlim(10,60)
     plt.ylim(ymin=0)
     plt.show()
-
-    # TODO sort points[i] by x value
-    # TODO plot list of list of (temp, growthrate) points
-    # points[i] is list of points for bacterium i+1
-
-
-
