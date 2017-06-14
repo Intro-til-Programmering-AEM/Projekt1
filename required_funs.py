@@ -53,7 +53,16 @@ def plotNumbers(data):
     plt.show()
 
 def plotGrowthRates(data):
-    print("Error: not implemented yet") # TODO
+    x = (data.Temperature) # Make some data, x- and y-values
+    y = (data.GrowthRate)
+    plt.plot(x, y, "b*") # Scatter plot with blue stars
+    plt.grid()
+    plt.title("Simple scatter plot") # Set the title of the graph
+    plt.xlabel("x-values") # Set the x-axis label
+    plt.ylabel("y-values") # Set the y-axis label
+    plt.xlim([-4, 4]) # Set the limits of the x-axis
+    plt.ylim([-3, 3]) # Set the limits of the y-axis
+    plt.show()
 
 bacteria_types = {
     1: "Salmonella enterica",
