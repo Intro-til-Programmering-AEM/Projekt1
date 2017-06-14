@@ -4,13 +4,15 @@ from os import path
 
 def main():
     print("Welcome to the bacterial data analysis program!")
-    print("Your options:")
     filters = []
     while(True):
+        print_filters(filters)
+        print("Your options:")
         option = menu(main_options)
         if option is None:
             pass
         elif option == 1:
+            originalData = input_datafile()
             data = input_datafile()
             print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 2:
@@ -52,6 +54,10 @@ def main():
                     filters = []
                 else:
                     del filters[choice-1]
+            # Refilters data every time a filter is added or deleted, inefficient!
+            data = originalData
+            for f in filters:
+                data = filter(f[0],data)
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             option = menu(statistic_options)
@@ -132,5 +138,13 @@ def input_filename():
         except EOFError:
             pass
         print("File does not exist or you do not have permission to read it. Please try again.")
+
+def print_filters(filters):
+    if not filters:
+        print("No active filters.")
+    else:
+        print("Active filter:")
+        for f in filters:
+            print("* "+f[1])
 
 main()
