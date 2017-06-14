@@ -34,7 +34,14 @@ def main():
                     filter_text = column_options[option]+" must be "+("greater than" if choice == 1 else "less than")+" "+str(bound)
                     filters.append((filter_fun,filter_text))
             elif option == 2:
-                print("TODO: not implemented yet")
+                print("Which filter would you like to remove?")
+                filter_texts = list(map(lambda f: f[1], filters))
+                filter_texts.append("All filters")
+                choice = menu(filter_texts)
+                if choice == len(filter_texts):
+                    filters = []
+                else:
+                    del filters[choice-1]
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             statistic = statistic_options[menu(statistic_options)]
