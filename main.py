@@ -31,7 +31,8 @@ def main():
                     def filter_fun(row):
                         col = row.Temperature if option == 1 else row.GrowthRate
                         return col > bound if choice == 1 else col < bound
-                    filters.append((filter_fun,column_options[option]+" must be "+("greater than" if choice == 1 else "less than")+" "+str(bound)))
+                    filter_text = column_options[option]+" must be "+("greater than" if choice == 1 else "less than")+" "+str(bound)
+                    filters.append((filter_fun,filter_text))
             elif option == 2:
                 print("TODO: not implemented yet")
         elif option == 3:
