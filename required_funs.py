@@ -53,7 +53,14 @@ def plotNumbers(data):
     plt.show()
 
 def plotGrowthRates(data):
-    print("Error: not implemented yet") # TODO
+    points = [[] for i in bacteria_types]
+    for i, r in data.iterrows():
+        points[int(r.Bacteria) - 1].append((r.Temperature, r.GrowthRate))
+    # TODO sort points[i] by x value
+    # TODO plot list of list of (temp, growthrate) points
+    # points[i] is list of points for bacterium i
+
+
 
 bacteria_types = {
     1: "Salmonella enterica",
