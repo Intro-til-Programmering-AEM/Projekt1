@@ -42,6 +42,10 @@ def main():
                     filters = []
                 else:
                     del filters[choice-1]
+            # Refilters data every time a filter is added or deleted, inefficient!
+            data = originalData
+            for f in filters:
+                data = filter(f[0],data)
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             statistic = statistic_options[menu(statistic_options)]
