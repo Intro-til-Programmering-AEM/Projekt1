@@ -20,7 +20,7 @@ def main():
                 if option == 3:
                     choice = menu(categorical_options)
                     print("Which bacteria type?")
-                    bacterium = menu(bacteria_types)
+                    bacterium = menu(list(bacteria_types.values()))
                     if choice == 1:
                         filters.append((lambda r: r.Bacteria != bacterium, "Exclude "+bacteria_types[bacterium]))
                     else:
