@@ -17,7 +17,10 @@ def main():
             if originalData is not None:
                 data = originalData
                 print("Succesfully imported "+str(len(data))+" rows of data.")
-        if data is not None:
+        elif option == 5:
+            print("Thank you for using the bacterial data analysis program.")
+            sys.exit()
+        elif data is not None:
             if option == 2:
                 option = menu(filter_options)
                 if option is None:
@@ -74,9 +77,6 @@ def main():
                  dataPlot(data)
         else:
             print("Please load valid data before attempting to use this function")
-        if option == 5:
-            print("Thank you for using the bacterial data analysis program.")
-            sys.exit()
         # No else needed, it has already been checked that the option is legal
 
 main_options = ["Load data","Filter data","Display statistics","Generate plots","Quit"]
