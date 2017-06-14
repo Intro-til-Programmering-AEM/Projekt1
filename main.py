@@ -59,6 +59,7 @@ def main():
             data = originalData
             for f in filters:
                 data = data[f[0](data)]
+            print(str(len(data))+" rows left after filtering")
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             option = menu(statistic_options)
