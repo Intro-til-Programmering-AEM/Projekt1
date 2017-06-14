@@ -95,10 +95,7 @@ def input_option(options):
     while(True):
         try:
             # Get number that may be a legal option
-            x = input("Select an option: ")
-            if x == "":
-                raise EOFError
-            x = int(x)
+            x = int(input_wrapper("Select an option: "))
             # Check if it's legal
             if x <= len(options) and x > 0:
                 return x
@@ -113,7 +110,7 @@ def input_option(options):
 def input_float(request):
     while(True):
         try:
-            x = float(input(request))
+            x = float(input_wrapper(request))
             return x
         except (ValueError, EOFError):
             print("Please input a real number.")
@@ -132,7 +129,7 @@ def input_datafile():
 def input_filename():
     while(True):
         try:
-            filename = input("Please input the path to your data file: ")
+            filename = input_wrapper("Please input the path to your data file: ")
             if path.isfile(filename):
                 return(filename)
         except EOFError:
@@ -146,5 +143,11 @@ def print_filters(filters):
         print("Active filter:")
         for f in filters:
             print("* "+f[1])
+
+def input_wrapper(request):
+    x = input(request)
+    if x == "":
+        raise EOFError
+    return x
 
 main()
