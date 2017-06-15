@@ -7,9 +7,9 @@ def dataStatistics(data, statistic):
     elif statistic == "Mean Growth rate":
         return np.mean(data.GrowthRate)
     elif statistic == "Std Temperature":
-        return np.sd(data.Temperature)
+        return np.std(data.Temperature, ddof=1)
     elif statistic == "Std Growth rate":
-        return np.sd(data.GrowthRate)
+        return np.std(data.GrowthRate, ddof=1)
     elif statistic == "Rows":
         return(len(data))
     elif statistic == "Mean Cold Growth rate":

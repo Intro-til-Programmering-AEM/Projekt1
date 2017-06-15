@@ -104,7 +104,7 @@ while(True):
             else:
                 # Translate choice the name of the statistic
                 statistic = statistic_options[option-1]
-                print(dataStatistics(data,statistic))
+                print(statistic+": "+str(dataStatistics(data,statistic)))
         # Plotting
         elif option == 4:
             dataPlot(data)
