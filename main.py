@@ -14,49 +14,68 @@ while(True):
     print_filters(filters)
     print("Your options:")
     option = menu(main_options)
-    if option is None: #the program can be exited by pressing enter
+    # Empty input restarts menu
+    if option is None:
         pass
+    # Importing
     elif option == 1:
         originalData = input_datafile()
-        if originalData is not None: #If data has been uploaded the program tells the user how many rows of data that has been implementet
+        # originalData may be none if user cancelled
+        if originalData is not None:
+            # data will be filtered on, keep originalData around for resetting the filters
             data = originalData
             print("Succesfully imported "+str(len(data))+" rows of data.")
+    # Quitting
     elif option == 5:
         print("Thank you for using the bacterial data analysis program.")
+        # Exit properly
         sys.exit()
+    # If data is defined
     elif data is not None:
+        # Filtering
         if option == 2:
             option = menu(filter_options)
-            if option is None: #By pressing enter the user is redirected to the main menu
+            #By pressing enter the user is redirected to the main menu (but the data is refiltered)
+            if option is None:
                 pass
-            elif option == 1: # Adding
+            # Adding a filter
+            elif option == 1:
                 print("Which column would you like to filter on?")
                 option = menu(column_options)
                 print("Which kind of filter would you like to add?")
                 if option is None:
                     pass
+                # elif ensures that pass returns all the way to main menu
                 elif option == 3:
                     choice = menu(categorical_options)
                     print("Which bacteria type?")
-                    bacterium = menu(list(bacteria_types.values())) #Henter listen af bakterietyper fra required funs
+                    bacterium = menu(list(bacteria_types.values()))
                     if choice is None:
                         pass
                     elif choice == 1:
+                        # filters is a list of (filtering function, descriptive text) tuples
                         filters.append((lambda r: r.Bacteria != bacterium, "Exclude "+bacteria_types[bacterium]))
                     else:
                         filters.append((lambda r: r.Bacteria == bacterium, "Include only "+bacteria_types[bacterium]))
+                # only two other options are 1 and 2
                 else:
                     choice = menu(continuous_options)
                     bound = input_float("Please input your bound: ")
+                    # Create description for continuous filter
                     filter_text = column_options[option-1]+" must be "+("less than" if choice == 1 else "greater than")+" "+str(bound)
-                    filters.append((continous_filter_closure(choice, option, bound),filter_text))
-            elif option == 2: # Deleting
+                    # Create closure for filtering based on current choices
+                    filter_fun = continous_filter_closure(choice, option, bound)
+                    # Append to the list of filters
+                    filters.append((filter_fun,filter_text))
+            # Deleting a filter
+            elif option == 2:
                 print("Which filter would you like to remove?")
                 filter_texts = list(map(lambda f: f[1], filters))
                 filter_texts.append("All filters")
                 choice = menu(filter_texts)
                 if choice is None:
                     pass
+                # If choice is the last one, "All filters"
                 elif choice == len(filter_texts):
                     filters = []
                 else:
@@ -64,16 +83,21 @@ while(True):
             # Refilters data every time a filter is added or deleted, inefficient!
             data = originalData
             for f in filters:
+                # Filter by this filter
                 data = data[f[0](data)]
             print(str(len(data))+" rows left after filtering")
+        # Calculating statistics
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
             option = menu(statistic_options)
+            # Enter returns to main menu
             if option is None:
                 pass
             else:
+                # Translate choice the name of the statistic
                 statistic = statistic_options[option]
                 print(dataStatistics(data,statistic))
+        # Plotting
         elif option == 4:
             dataPlot(data)
     else:
