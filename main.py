@@ -1,5 +1,4 @@
 import sys
-from required_funs import bacteria_types # I tvivl om hvad der skal imporeres til hvilke filer
 from os import path
 from filhaandtering import dataLoad, input_datafile, input_filename
 from statistik import dataStatistics
