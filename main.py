@@ -48,6 +48,7 @@ def main(): #Start menuen
                         def filter_fun(row):
                             col = row.Temperature if option == 1 else row.GrowthRate
                             return col < bound if choice == 1 else col > bound
+
                         filter_text = column_options[option-1]+" must be "+("less than" if choice == 1 else "greater than")+" "+str(bound)
                         filters.append((filter_fun,filter_text))
                 elif option == 2: # Deleting
@@ -75,7 +76,9 @@ def main(): #Start menuen
                     statistic = statistic_options[option]
                     print(dataStatistics(data,statistic))
             elif option == 4:
-                 dataPlot(data)
+                for f in filters:
+                    print(f[1])
+                dataPlot(data,list(map(lambda f: f[1], filters)))
         else:
             print("Please load valid data before attempting to use this function")
         # No else needed, it has already been checked that the option is legal
@@ -160,3 +163,8 @@ def input_wrapper(request):
     return x
 
 main()
+
+def closure(x):
+    def husker():
+        print(x)
+    return husker
