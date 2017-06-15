@@ -1,6 +1,9 @@
 #Filhåndtering:
 import pandas as pd
 from required_funs import bacteria_types
+from inputhandlers import input_wrapper
+from os import path
+
 #Denne funktion loader den ønskede fil og frasorterer de data, der ikke opstiller kravene.
 def dataLoad(filename): #Det antages, at filen findes
     try:
