@@ -6,13 +6,17 @@ from os import path
 
 #Denne funktion loader den ønskede fil og frasorterer de data, der ikke opstiller kravene.
 def dataLoad(filename): #Det antages, at filen findes
+    #Filen indlæses og der gives navne til de tre søjler
     try:
         data=pd.read_csv(filename,sep=' ',names = ["Temperature","GrowthRate", "Bacteria"])
     except:
         return None
+    #Der oprettes en tom liste
     toBeDeleted = set()
+    #for loop med antallet af rækker
     for i, row in data.iterrows():
         ln = i+1
+        #Følgende if-statements sorteres ift. de givne parametre og de værdier, der ikke opfylder kravene kommer i toBeDeleted
         if(row.Temperature < 10):
             toBeDeleted.add(i)
             print("Temperature too low in line "+str(ln))
@@ -25,6 +29,7 @@ def dataLoad(filename): #Det antages, at filen findes
         if(row.Bacteria not in bacteria_types.keys()):
             toBeDeleted.add(i)
             print("Bacteria type not valid in line "+str(ln))
+    #toBeDeleted slettes
     data = data.drop(toBeDeleted)
     return data
 
