@@ -1,9 +1,9 @@
 import sys
 from required_funs import *
-from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer 
+from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer
 from os import path
 
-def main():
+def main(): #Start menuen
     print("Welcome to the bacterial data analysis program!")
     filters = []
     data = None
@@ -11,11 +11,11 @@ def main():
         print_filters(filters)
         print("Your options:")
         option = menu(main_options)
-        if option is None:
+        if option is None: #the program can be exited by pressing enter
             pass
         elif option == 1:
             originalData = input_datafile()
-            if originalData is not None:
+            if originalData is not None: #If data has been uploaded the program tells the user how many rows of data that has been implementet
                 data = originalData
                 print("Succesfully imported "+str(len(data))+" rows of data.")
         elif option == 5:
@@ -24,7 +24,7 @@ def main():
         elif data is not None:
             if option == 2:
                 option = menu(filter_options)
-                if option is None:
+                if option is None: #By pressing enter the user is redirected to the main menu
                     pass
                 elif option == 1: # Adding
                     print("Which column would you like to filter on?")
@@ -35,7 +35,7 @@ def main():
                     elif option == 3:
                         choice = menu(categorical_options)
                         print("Which bacteria type?")
-                        bacterium = menu(list(bacteria_types.values()))
+                        bacterium = menu(list(bacteria_types.values())) #Henter listen af bakterietyper fra required funs
                         if choice is None:
                             pass
                         elif choice == 1:

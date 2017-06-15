@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer 
+from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer
 
 bacteria_types = {
     1: "Salmonella enterica",
@@ -49,12 +49,12 @@ def dataStatistics(data, statistic):
     elif statistic == "Mean Hot Growth rate":
         return np.mean(data.GrowthRate[data.Temperature>50])
 
-def dataPlot(data):
+def dataPlot(data,filters=[]):
     plotNumbers(data)
     plotGrowthRates(data)
     boxPlotGrowthRates(data)
     boxPlotTemperatures(data)
-    
+
 
 def plotNumbers(data):
     counts = [list(data.Bacteria).count(i) for i in bacteria_types.keys()]
@@ -80,4 +80,3 @@ def plotGrowthRates(data):
     plt.xlim(10,60)
     plt.ylim(ymin=0)
     plt.show()
-    
