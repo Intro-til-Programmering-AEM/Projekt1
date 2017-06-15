@@ -1,5 +1,5 @@
 #Filhåndtering:
-
+import pandas as pd
 #Denne funktion loader den ønskede fil og frasorterer de data, der ikke opstiller kravene.
 def dataLoad(filename): #Det antages, at filen findes
     try:
