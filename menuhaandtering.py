@@ -1,6 +1,7 @@
 #Menu håndtering
 from inputhandlers import input_option
 
+# Lists of options used as input in the menu-function in the main file
 main_options = ["Load data","Filter data","Display statistics","Generate plots","Quit"]
 
 statistic_options = ["Mean Temperature","Mean Growth rate","Std Temperature","Std Growth Rate","Rows","Mean Cold Growth rate","Mean Hot Growth rate"]
