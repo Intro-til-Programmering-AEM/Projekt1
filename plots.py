@@ -39,7 +39,7 @@ def plotGrowthRates(data):
     plt.xlim(10,60)
     plt.ylim(ymin=0)
 
-    def boxPlotGrowthRates(data):
+def boxPlotGrowthRates(data):
     labels = list(bacteria_types.values())
     values = [[] for i in bacteria_types]
     for i, r in data.iterrows():
