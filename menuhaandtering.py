@@ -1,4 +1,4 @@
-#Menu håndtering
+#Menuhaandtering
 from inputhandlers import input_option
 
 # Lists of options used as input in the menu-function in the main file
