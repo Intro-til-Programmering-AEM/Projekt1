@@ -1,4 +1,5 @@
 #Menuhaandtering
+
 from inputhandlers import input_option
 
 # Lists of options used as input in the menu-function in the main file
@@ -19,4 +20,3 @@ def menu(options):
     for i in range(len(options)):
         print(str(i+1)+". "+options[i]+".")
     return input_option(options)
-

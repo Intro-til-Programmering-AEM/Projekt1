@@ -24,7 +24,10 @@ while(True):
         if originalData is not None:
             # data will be filtered on, keep originalData around for resetting the filters
             data = originalData
-            print("Succesfully imported "+str(len(data))+" rows of data.")
+            if len(data) == 0:
+                print("No valid lines in file. Nothing imported.")
+            else:
+                print("Succesfully imported "+str(len(data))+" rows of data.")
     # Quitting
     elif option == 5:
         print("Thank you for using the bacterial data analysis program.")
@@ -70,7 +73,7 @@ while(True):
             # Deleting a filter
             elif option == 2:
                 print("Which filter would you like to remove?")
-                filter_texts = list(map(lambda f: f[1], filters))
+                filter_texts = [f[1] for f in filters]
                 filter_texts.append("All filters")
                 choice = menu(filter_texts)
                 if choice is None:
@@ -80,12 +83,16 @@ while(True):
                     filters = []
                 else:
                     del filters[choice-1]
-            # Refilters data every time a filter is added or deleted, inefficient!
             data = originalData
-            for f in filters:
-                # Filter by this filter
-                data = data[f[0](data)]
-            print(str(len(data))+" rows left after filtering")
+            # filter every row with every filter, only accept it if all filters let it through
+            # scales as number of filters * number of rows
+            mask = [all([f[0](x) for f in filters]) for i, x in data.iterrows()]
+            # and the filtering is done in "only" one additional pass over the data
+            data = data[mask]
+            if len(data) == 0:
+                print("No rows left after filtering. Consider deleting one or more filters.")
+            else:
+                print(str(len(data))+" rows left after filtering")
         # Calculating statistics
         elif option == 3:
             print("Please choose the kind of statistic you would like to calculate:")
@@ -102,4 +109,3 @@ while(True):
             dataPlot(data)
     else:
         print("Please load valid data before attempting to use this function")
-    # No else needed, it has already been checked that the option is legal
