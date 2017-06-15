@@ -1,11 +1,11 @@
 import sys
 from required_funs import bacteria_types # I tvivl om hvad der skal imporeres til hvilke filer
 from os import path
-from filhåndtering import dataLoad, input_datafile, input_filename
+from filhaandtering import dataLoad, input_datafile, input_filename
 from statistik import dataStatistics
 from inputhandlers import input_option, input_float, input_wrapper
 from filterfunktioner import print_filters, continous_filter_closure
-from menuhåndtering import *
+from menuhaandtering import *
 from plots import dataPlot, plotWrapper, plotNumbers, plotGrowthRates, boxPlotGrowthRates, boxPlotTemperatures
 print("Welcome to the bacterial data analysis program!")
 filters = []
@@ -49,7 +49,7 @@ while(True):
                     choice = menu(continuous_options)
                     bound = input_float("Please input your bound: ")
                     filter_text = column_options[option-1]+" must be "+("less than" if choice == 1 else "greater than")+" "+str(bound)
-                    filters.append((continous_filter_closure(choice, bound),filter_text))
+                    filters.append((continous_filter_closure(choice, option, bound),filter_text))
             elif option == 2: # Deleting
                 print("Which filter would you like to remove?")
                 filter_texts = list(map(lambda f: f[1], filters))

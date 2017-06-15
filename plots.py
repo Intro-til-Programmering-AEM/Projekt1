@@ -3,13 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-#funktionen
+#Nedenstående funktion anvender plotwrapper funktionen på de andre plotfunktioner
 def dataPlot(data,filters=[]):
     plotWrapper(plotNumbers, data, filters)
     plotWrapper(plotGrowthRates, data, filters)
     plotWrapper(boxPlotGrowthRates, data, filters)
     plotWrapper(boxPlotTemperatures, data, filters)
 
+#plotWrapper funktionen tilføjer de valgte filtre til graftitlen
 def plotWrapper(plotFun,data, filters):
     plotFun(data)
     if filters != []:
