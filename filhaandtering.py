@@ -10,29 +10,29 @@ def dataLoad(filename): #Det antages, at filen findes
     # Filen indlæses og der gives navne til de tre søjler
     try:
         data=pd.read_csv(filename,sep=' ',names = ["Temperature","GrowthRate", "Bacteria"])
+        # Der oprettes en tom liste
+        toBeDeleted = set()
+        # for loop med antallet af rækker
+        for i, row in data.iterrows():
+            ln = i+1
+            # Følgende if-statements sorteres ift. de givne parametre og de værdier, der ikke opfylder kravene kommer i toBeDeleted
+            if(row.Temperature < 10):
+                toBeDeleted.add(i)
+                print("Temperature too low in line "+str(ln))
+            if(row.Temperature > 60):
+                toBeDeleted.add(i)
+                print("Temperature too high in line "+str(ln))
+            if(row.GrowthRate < 0):
+                toBeDeleted.add(i)
+                print("Growth rate not positive in line "+str(ln))
+            if(row.Bacteria not in bacteria_types.keys()):
+                toBeDeleted.add(i)
+                print("Bacteria type not valid in line "+str(ln))
+        # toBeDeleted slettes
+        data = data.drop(toBeDeleted)
+        return data
     except:
         return None
-    # Der oprettes en tom liste
-    toBeDeleted = set()
-    # for loop med antallet af rækker
-    for i, row in data.iterrows():
-        ln = i+1
-        # Følgende if-statements sorteres ift. de givne parametre og de værdier, der ikke opfylder kravene kommer i toBeDeleted
-        if(row.Temperature < 10):
-            toBeDeleted.add(i)
-            print("Temperature too low in line "+str(ln))
-        if(row.Temperature > 60):
-            toBeDeleted.add(i)
-            print("Temperature too high in line "+str(ln))
-        if(row.GrowthRate < 0):
-            toBeDeleted.add(i)
-            print("Growth rate not positive in line "+str(ln))
-        if(row.Bacteria not in bacteria_types.keys()):
-            toBeDeleted.add(i)
-            print("Bacteria type not valid in line "+str(ln))
-    # toBeDeleted slettes
-    data = data.drop(toBeDeleted)
-    return data
 
 # Denne funktion kontrollerer om der er data eller ej.
 # Returnerer dataframe eller None
