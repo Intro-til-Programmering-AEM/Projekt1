@@ -3,7 +3,7 @@ from required_funs import bacteria_types # I tvivl om hvad der skal imporeres ti
 from os import path
 from filhåndtering import dataLoad, input_datafile, input_filename
 from statistik import dataStatistics
-from Inputhandlers import input_option, input_float, input_wrapper
+from inputhandlers import input_option, input_float, input_wrapper
 from filterfunktioner import print_filters, continous_filter_closure
 from menuhåndtering import *
 from plots import dataPlot, plotWrapper, plotNumbers, plotGrowthRates, boxPlotGrowthRates, boxPlotTemperatures
