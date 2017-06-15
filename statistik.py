@@ -17,4 +17,3 @@ def dataStatistics(data, statistic):
     elif statistic == "Mean Hot Growth rate":
         return np.mean(data.GrowthRate[data.Temperature>50])
 
-#Nedenstående funktion laver ekstra statistik
