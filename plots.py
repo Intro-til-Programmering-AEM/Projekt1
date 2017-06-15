@@ -1,8 +1,6 @@
 #Denne fil indeholder plots og plot relaterede funktioner
-import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-
+from required_funs import bacteria_types
 #Nedenstående funktion anvender plotwrapper funktionen på de andre plotfunktioner
 def dataPlot(data,filters=[]):
     plotWrapper(plotNumbers, data, filters)
@@ -10,13 +8,14 @@ def dataPlot(data,filters=[]):
     plotWrapper(boxPlotGrowthRates, data, filters)
     plotWrapper(boxPlotTemperatures, data, filters)
 
-#plotWrapper funktionen tilføjer de valgte filtre til graftitlen
+#plotWrapper funktionen tilføjer de valgte filtre til graf-titlen
 def plotWrapper(plotFun,data, filters):
     plotFun(data)
     if filters != []:
         plt.title("Filters:"+", ".join(filters))
     plt.show()
 
+#Laver histogram over bakterietyper
 def plotNumbers(data):
     counts = [list(data.Bacteria).count(i) for i in bacteria_types.keys()]
     plt.bar(list(bacteria_types.keys()), counts, tick_label = list(bacteria_types.values()))
