@@ -18,8 +18,8 @@ def boxPlotGrowthRates(data):
     plt.show()
     
 def boxPlotTemperatures(data):
-    labels = list(bacteria_types.values())
-    values = [[] for i in bacteria_types]
+	 labels = [bacteria_types[i] for i in set(data.Bacteria)]
+	 values = [[] for i in bacteria_types]
     for i, r in data.iterrows():
         values[int(r.Bacteria) - 1].append(r.Temperature)
     plt.figure
