@@ -9,13 +9,13 @@ def input_option(options):
         try:
             # Get number that may be a legal option
             x = int(input_wrapper("Select an option: "))
-            # Check if it's legal
+            # Check if it's legal and is so, return it
             if x <= len(options) and x > 0:
                 return x
             # if the options is not legal, an appropriate message is printed
             else:
                 print("Not an option, please try again.")
-        # if no option is selected, return None
+        # if no option is selected, None is returned
         except EOFError:
             return None
         # if a wrong type of options is selected, pass and repeat while-statement
@@ -41,8 +41,3 @@ def input_wrapper(request):
     if x == "":
         raise EOFError
     return x
-
-
-
-
-
