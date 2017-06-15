@@ -1,4 +1,4 @@
-#Denne fil indeholder statistik
+import numpy as np
 
 #Nedenstående funktion laver de statistik-funktioner, der er krævet i oplægget:
 def dataStatistics(data, statistic):
