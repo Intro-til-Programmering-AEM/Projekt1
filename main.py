@@ -5,6 +5,8 @@ from filhåndtering import dataLoad, input_datafile, input_filename
 from statistik import dataStatistics
 from Inputhandlers import input_option, input_float, input_wrapper
 from filterfunktioner import print_filters, continous_filter_closure
+from menuhåndtering import *
+from plots import dataPlot, plotWrapper, plotNumbers, plotGrowthRates, boxPlotGrowthRates, boxPlotTemperatures
 print("Welcome to the bacterial data analysis program!")
 filters = []
 data = None
