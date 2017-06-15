@@ -5,3 +5,4 @@ bacteria_types = {
     4: "Brochothrix thermosphacta"
 }
 
+column_options = ["Temperature","Growth rate","Bacteria type"]

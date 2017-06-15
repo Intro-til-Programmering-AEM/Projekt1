@@ -8,8 +8,6 @@ statistic_options = ["Mean Temperature","Mean Growth rate","Std Temperature","St
 
 filter_options = ["Add a filter","Remove a filter"]
 
-column_options = ["Temperature","Growth rate","Bacteria type"]
-
 continuous_options = ["Upper bound","Lower bound"]
 
 categorical_options = ["Exclude a type","Exclude everything but one type"]

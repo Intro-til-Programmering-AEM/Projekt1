@@ -7,6 +7,8 @@ from inputhandlers import input_option, input_float, input_wrapper
 from filterfunktioner import print_filters, continous_filter_closure
 from menuhaandtering import *
 from plots import dataPlot, plotWrapper, plotNumbers, plotGrowthRates, boxPlotGrowthRates, boxPlotTemperatures
+from data_descriptions import column_options, bacteria_types
+
 print("Welcome to the bacterial data analysis program!")
 filters = []
 data = None

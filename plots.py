@@ -1,6 +1,6 @@
 #Denne fil indeholder plots og plot relaterede funktioner
 import matplotlib.pyplot as plt
-from required_funs import bacteria_types
+from data_descriptions import bacteria_types
 
 #Nedenstående funktion anvender plotwrapper funktionen på de andre plotfunktioner
 def dataPlot(data,filters=[]):
