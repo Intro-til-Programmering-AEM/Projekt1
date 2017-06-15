@@ -2,8 +2,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer
 
+#funktionen
 def dataPlot(data,filters=[]):
     plotWrapper(plotNumbers, data, filters)
     plotWrapper(plotGrowthRates, data, filters)
