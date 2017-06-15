@@ -1,10 +1,11 @@
-# Filhåndtering:
+# Filhaandtering:
 import pandas as pd
 from inputhandlers import input_wrapper
 from data_descriptions import bacteria_types
 from os import path
 
-# Denne funktion loader den ønskede fil og frasorterer de data, der ikke opstiller kravene.
+# Denne funktion loader den oenskede fil og frasorterer de data, der ikke opstiller kravene.
+# Returnerer en dataframe eller none
 def dataLoad(filename): #Det antages, at filen findes
     # Filen indlæses og der gives navne til de tre søjler
     try:
@@ -34,6 +35,7 @@ def dataLoad(filename): #Det antages, at filen findes
     return data
 
 # Denne funktion kontrollerer om der er data eller ej.
+# Returnerer dataframe eller None
 def input_datafile():
     while(True):
         # Tager filen
@@ -44,11 +46,13 @@ def input_datafile():
         data = dataLoad(filename)
         if data is not None:
             return data
-        # Hvis der ikke er data så kommer der fejlmeddelelse
+        # Hvis der ikke er data saa kommer der fejlmeddelelse
         else:
             print("File contents are invalid, please try again.")
 
-#
+
+
+# Returnerer dataframe eller 1none
 def input_filename():
     while(True):
         try:
