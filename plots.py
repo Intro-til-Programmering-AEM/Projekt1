@@ -68,10 +68,14 @@ def boxPlotGrowthRates(data):
 
 # Boxplot for temperatures
 def boxPlotTemperatures(data):
+    # make a list of labels from pre-defined list bacteria_types
     labels = list(bacteria_types.values())
+    # make amount of empty lists based on amount of bacteria types
     values = [[] for i in bacteria_types]
+    # loop that fills each list with corresponding temperatures
     for i, r in data.iterrows():
         values[int(r.Bacteria) - 1].append(r.Temperature)
+    # make the plot
     plt.figure
     plt.title("Boxplot for temperatures")
     plt.boxplot(values, labels = labels)
