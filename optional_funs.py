@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 #import numpy as np
-from required_funs import bacteria_types
+from required_funs import *
 
 
 def boxPlotGrowthRates(data):
