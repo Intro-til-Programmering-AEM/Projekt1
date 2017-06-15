@@ -10,7 +10,6 @@ def boxPlotGrowthRates(data):
         values[int(r.Bacteria) - 1].append(r.GrowthRate)
     plt.figure
     plt.boxplot(values, labels = labels)
-    plt.show()
 
 def boxPlotTemperatures(data):
 	 labels = [bacteria_types[i] for i in set(data.Bacteria)]
@@ -19,5 +18,4 @@ def boxPlotTemperatures(data):
         values[int(r.Bacteria) - 1].append(r.Temperature)
     plt.figure
     plt.boxplot(values, labels = labels)
-    plt.show()
 
