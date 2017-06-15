@@ -1,12 +1,7 @@
 import matplotlib.pyplot as plt
 #import numpy as np
+from required_funs import *
 
-bacteria_types = {
-    1: "Salmonella enterica",
-    2: "Bacillus cereus",
-    3: "Listeria",
-    4: "Brochothrix thermosphacta"
-}
 
 def boxPlotGrowthRates(data):
     labels = list(bacteria_types.values())
@@ -16,7 +11,7 @@ def boxPlotGrowthRates(data):
     plt.figure
     plt.boxplot(values, labels = labels)
     plt.show()
-    
+
 def boxPlotTemperatures(data):
     labels = list(bacteria_types.values())
     values = [[] for i in bacteria_types]
@@ -25,3 +20,4 @@ def boxPlotTemperatures(data):
     plt.figure
     plt.boxplot(values, labels = labels)
     plt.show()
+
