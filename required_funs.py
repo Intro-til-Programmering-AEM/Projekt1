@@ -50,18 +50,22 @@ def dataStatistics(data, statistic):
         return np.mean(data.GrowthRate[data.Temperature>50])
 
 def dataPlot(data,filters=[]):
-    plotNumbers(data)
-    plotGrowthRates(data)
-    boxPlotGrowthRates(data)
-    boxPlotTemperatures(data)
+    plotWrapper(plotNumbers, data, filters)
+    plotWrapper(plotGrowthRates, data, filters)
+    plotWrapper(boxPlotGrowthRates, data, filters)
+    plotWrapper(boxPlotTemperatures, data, filters)
 
+def plotWrapper(plotFun,data, filters):
+    plotFun(data)
+    if filters != []:
+        plt.title("Filters:"+", ".join(filters))
+    plt.show()
 
 def plotNumbers(data):
     counts = [list(data.Bacteria).count(i) for i in bacteria_types.keys()]
     plt.bar(list(bacteria_types.keys()), counts, tick_label = list(bacteria_types.values()))
     plt.title("Numbers of each type of bacteria")
     plt.ylabel("Number of bacteria")
-    plt.show()
 
 def plotGrowthRates(data):
     points = [[] for i in bacteria_types]
@@ -75,8 +79,8 @@ def plotGrowthRates(data):
     plt.xlabel("Temperature")
     plt.ylabel("Growth rate")
     plt.grid()
-    plt.title("Growth rate by temperature")
+    plt.suptitle("Growth rate by temperature")
     plt.legend(label,loc="upper right")
     plt.xlim(10,60)
     plt.ylim(ymin=0)
-    plt.show()
+
