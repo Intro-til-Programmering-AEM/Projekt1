@@ -1,4 +1,4 @@
-#Menu håndtering
+#Menu haandtering
 from inputhandlers import input_option
 
 main_options = ["Load data","Filter data","Display statistics","Generate plots","Quit"]
