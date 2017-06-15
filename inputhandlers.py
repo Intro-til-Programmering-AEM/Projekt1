@@ -29,7 +29,7 @@ def input_float(request):
             pass
 
 
-#Denne funktion laver en EOFError, hvis input er tomt.
+#Denne funktion ser om der er et input fra brugeren og laver en EOFError, hvis input er tomt.
 def input_wrapper(request):
     x = input(request)
     if x == "":
