@@ -1,6 +1,8 @@
-#Menu haandtering
+#Menuhaandtering
+
 from inputhandlers import input_option
 
+# Lists of options used as input in the menu-function in the main file
 main_options = ["Load data","Filter data","Display statistics","Generate plots","Quit"]
 
 statistic_options = ["Mean Temperature","Mean Growth rate","Std Temperature","Std Growth Rate","Rows","Mean Cold Growth rate","Mean Hot Growth rate"]
@@ -18,4 +20,3 @@ def menu(options):
     for i in range(len(options)):
         print(str(i+1)+". "+options[i]+".")
     return input_option(options)
-
