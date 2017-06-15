@@ -1,8 +1,12 @@
 import sys
-from required_funs import *
-from optional_funs import * # I tvivl om hvad der skal imporeres til hvilke filer
+from required_funs import bacteria_types # I tvivl om hvad der skal imporeres til hvilke filer
 from os import path
-
+from filhåndtering import dataLoad, input_datafile, input_filename
+from statistik import dataStatistics
+from Inputhandlers import input_option, input_float, input_wrapper
+from filterfunktioner import print_filters, continous_filter_closure
+from menuhåndtering import *
+from plots import dataPlot, plotWrapper, plotNumbers, plotGrowthRates, boxPlotGrowthRates, boxPlotTemperatures
 print("Welcome to the bacterial data analysis program!")
 filters = []
 data = None
