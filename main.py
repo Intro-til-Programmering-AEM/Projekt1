@@ -45,11 +45,8 @@ def main(): #Start menuen
                     else:
                         choice = menu(continuous_options)
                         bound = input_float("Please input your bound: ")
-                        def filter_fun(row):
-                            col = row.Temperature if option == 1 else row.GrowthRate
-                            return col < bound if choice == 1 else col > bound
                         filter_text = column_options[option-1]+" must be "+("less than" if choice == 1 else "greater than")+" "+str(bound)
-                        filters.append((filter_fun,filter_text))
+                        filters.append((continous_filter_closure(choice, bound),filter_text))
                 elif option == 2: # Deleting
                     print("Which filter would you like to remove?")
                     filter_texts = list(map(lambda f: f[1], filters))
@@ -158,5 +155,10 @@ def input_wrapper(request):
     if x == "":
         raise EOFError
     return x
+
+def continous_filter_closure(col_number, bound):
+    col = row.Temperature if col_number == 1 else row.GrowthRate
+    filter_fun = lambda r: col < bound if choice == 1 else col > bound
+    return filter_fun
 
 main()
